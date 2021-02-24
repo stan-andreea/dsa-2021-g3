@@ -4,6 +4,14 @@
 *.obj
 *.elf
 
+### CodeBlocks ###
+# specific to CodeBlocks IDE
+*.layout
+*.depend
+# generated directories
+bin/
+obj/
+
 # Precompiled Headers
 *.gch
 *.pch
