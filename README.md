@@ -35,3 +35,4 @@ Our git workflow: [How I see PRs - part 2](https://youtu.be/8VU5SKvNnNo)
 * 2 - [Fork and Clone](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
 * 3 - [Commit and Push](https://docs.github.com/en/github/managing-files-in-a-repository/adding-a-file-to-a-repository-using-the-command-line)
 * 4 - [Pull Request](https://yangsu.github.io/pull-request-tutorial/)
+
