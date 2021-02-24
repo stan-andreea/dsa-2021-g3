@@ -28,8 +28,9 @@ Each lab will have proposed problems which you will have to solve and upload it 
 
 ### GIT Tutorials
 
-Our git workflow: [DSA lab workflow - part 1](https://youtu.be/n3QPlHes4EM)
-Our git workflow: [How I see PRs - part 2](https://youtu.be/8VU5SKvNnNo)
+Our git workflow:
+ [DSA lab workflow - part 1](https://youtu.be/n3QPlHes4EM)
+ [How I see PRs - part 2](https://youtu.be/8VU5SKvNnNo)
 
 * 1 - [Installing GIT](https://git-scm.com/downloads)
 * 2 - [Fork and Clone](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)

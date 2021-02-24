@@ -1,0 +1,239 @@
+//----- Listing.2.1 --- Code part 01 ----------------------
+// Sample singly-linked list node type definition
+typedef struct node
+{
+  int key; /* an optional field identifying the data */
+  /* other useful data fields */
+  struct node *next; /* link to next node */
+} NodeT;
+//----- Listing.2.2 --- Code part 02 ----------------------
+// Sample singly-linked list header cell type definition
+typedef struct 
+{
+  int count; /* an optional field */
+  NodeT *first; /* link to the first node in the list */
+  NodeT *last; /* link to the last node in the list */
+} ListT;
+//----- Listing.2.3 --- Code part 03 ----------------------
+// Sample code to create an empty singly-linked list
+/* Create an empty list */
+ListT *createEmptySLL()
+{
+	ListT *listPtr = (ListT*)malloc(sizeof(ListT));
+	if (listPtr)
+	{
+		listPtr->count = 0; // list empty
+		listPtr->first = listPtr->last = NULL;
+	}
+	return listPtr;
+}
+//----- Listing.2.4 --- Code part 04 ----------------------
+// Sample code to create and fill a SLL node with data
+/* Create a node and fill it with data */
+NodeT *createSLLNode(int key)
+{
+    NodeT *p = (NodeT *)malloc(sizeof(NodeT));
+    if (p)
+    {
+        // what is done here depends on the data stored at the node
+        p->key = key; // assignment allowed as the key is of a primitive type
+        p->next = NULL;
+    }
+    return p;
+}
+//----- Listing.2.5 --- Code part 05 ----------------------
+// Sample code for inserting a node at the beginning or end of a SLL
+// Example code for insertAtFront; does not check for duplicate keys
+int insertAtFront(ListT *listPtr, NodeT *p)
+{
+    if (listPtr)
+    {
+        // the list is non null
+        p->next = listPtr->first;
+        if (isEmpty(listPtr))
+        {
+            // p will be the sole node in the list
+            listPtr->last = p;
+        }
+        listPtr->first = p;
+        listPtr->count++;
+        return 1; // success
+    }
+    return 0; // failure
+}
+// Example code for insertAtRear; does not check for duplicate keys
+int insertAtRear(ListT *listPtr, NodeT *p)
+{
+	if (listPtr)
+	{  // the list is non null
+		if (isEmpty(listPtr))
+		{  // p will be the sole node in the list
+			listPtr->first = p;
+		}
+		else
+		{ // non-empty list
+			listPtr->last->next = p;
+		}
+		listPtr->last = p;
+		listPtr->count++; // increment number of nodes
+		return 1; // success
+	}
+	return 0; // failure
+}
+//----- Listing.2.6 --- Code part 06 ----------------------
+// Sample code for searching a node with a given key in a SLL, preceeding an insert operation
+    NodeT *q, *q1;
+    q1 = NULL; /* initialize */
+    q = listPtr->first;
+    while ( q != NULL )
+    {
+        if ( q->key == givenKey ) break;
+        q1 = q;
+        q = q->next;
+    }
+//----- Listing.2.7 --- Code part 07 ----------------------
+// Sample code for inserting a node with a given key in a SLL
+    if ( q != NULL )
+    {   /* node with key givenKey has address q */
+        if ( q == listPtr->first )
+        {   /* insert before the first node */
+            p->next = listPtr->first; // chain with former first
+            listPtr->first = p; // set p as first node
+        }
+        else
+        {   /* inside the list */
+            q1->next = p;
+            p->next = q;
+        }
+        listPtr->count++; // increment number of nodes
+        // success
+    }
+    // failure;
+//----- Listing.2.8 --- Code part 08 ----------------------
+// Sample code for inserting a node with a given key in a SLL
+    if ( q != NULL )
+    {
+        p->next = q->next; /* node with key givenKey has address q */
+        q->next = p;
+        if ( q == listPtr->last ) listPtr->last = p;
+        listPtr->count++; // increment number of nodes
+        // success
+    }
+	// failure
+//----- Listing.2.9 --- Code part 09 ----------------------
+// Sample code for a function to find a node with a given key in a SLL
+NodeT *find(ListT *listPtr, int givenKey)
+{
+    NodeT *p;
+    p = listPtr->first;
+    while ( p != NULL )
+        if ( p->key == givenKey ) /* Note. This comparison does work for primitive types only */
+        {
+            return p; /* key found in cell p */
+        }
+        else
+            p = p->next;
+    return NULL; /* not found */
+}
+//----- Listing.2.10 --- Code part 10 ----------------------
+// Sample code for deleting the first node in SLL
+NodeT *deleteFirst(ListT *listPtr)
+{
+    NodeT *p;
+    if ( listPtr->first != NULL )
+    {
+        // non-empty list
+        p = listPtr->first;
+        listPtr->first = listPtr->first->next;
+        // free( p ); // free up memory
+        listPtr->count--; // decrease the number of nodes
+        if ( listPtr->first == NULL ) // list is now empty
+            listPtr->last = NULL;
+        return p;
+    }
+    return NULL;
+}
+//----- Listing.2.11 --- Code part 11 ----------------------
+// Sample code for deleting the last node in SLL
+NodeT *deleteLast(ListT *listPtr)
+{
+    NodeT *q, *q1;
+    q1 = NULL; /* initialize */
+    q = listPtr->first;
+    if ( q != NULL )
+    {
+        /* non-empty list */
+        while ( q != listPtr->last )
+        {
+            /* advance towards end */
+            q1 = q;
+            q = q->next;
+        }
+        if ( q == listPtr->first )
+        {
+            /* only one node */
+            listPtr->first = listPtr->last = NULL;
+        }
+        else
+        {
+            /* more than one node */
+            q1->next = NULL;
+            listPtr->last = q1;
+        }
+        // free( q );
+    }
+    return q;
+}
+//----- Listing.2.12 --- Code part 12 ----------------------
+// Sample code for deleting a node with a given key from a SLL
+int deleteByKey(ListT *listPtr, int givenKey)
+{
+	NodeT *q, *q1;
+	q1 = NULL; /* initialize */
+	q = first;
+	/* search node */
+	while ( q != NULL )
+	{
+	  if ( q->key == givenKey ) break;
+	  q1 = q;
+	  q = q->next;
+	}
+	if ( q != NULL )
+	{   /* found a node with supplied key */
+	  if ( q == listPtr->first )
+	  { /* is the first node */
+	    listPtr->first = listPtr->first->next;
+	    free( q ); /* release memory */
+	    if ( listPtr->first == NULL ) listPtr->last = NULL;
+	  }
+	  else
+	  { /* other than first node */
+	    q1->next = q->next;
+	    if ( q == listPtr->last ) listPtr->last = q1;
+	    free( q ); /* release memory */
+	  }
+	  return 1; // success
+	}
+	return 0; // failure
+}
+//----- Listing.2.13 --- Code part 13 ----------------------
+// Sample code for purging a SLL
+void purge(ListT *listPtr)
+{
+	NodeT *p;
+	while ( listPtr->first != NULL )
+	{
+	  p = listPtr->first;
+	  listPtr->first = listPtr->first->next;
+	  free( p );
+	}
+	listPtr->last = NULL;
+	listPtr->count = 0;
+}
+//-----  --- Code part 14 ----------------------
+// Sample code for purging a SLL \begin{lstlisting}{}
+typedef struct
+{
+    int count;
+    NodeT *first; // always pints to the sentinel
+} ListT;
