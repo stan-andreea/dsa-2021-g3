@@ -17,9 +17,9 @@ Each lab will have proposed problems which you will have to solve and upload it 
 
 ### About tests
 
+* Test format ToBeAnnounced
 * Grades range: 1-10
 * Code does not even compile: 1 (by default, no excuses)
-* For every warning: -0.25 on the grade - your code should be clean enough to surpass any Codeblocks/CLion warnings
 * Cheating attempts: 1 (by default, no excuses)
 
 ### Administrative
@@ -28,7 +28,8 @@ Each lab will have proposed problems which you will have to solve and upload it 
 
 ### GIT Tutorials
 
-Our git workflow: [DSA lab workflow](https://git-scm.com/downloads)
+Our git workflow: [DSA lab workflow - part 1](https://youtu.be/n3QPlHes4EM)
+Our git workflow: [How I see PRs - part 2](https://youtu.be/8VU5SKvNnNo)
 
 * 1 - [Installing GIT](https://git-scm.com/downloads)
 * 2 - [Fork and Clone](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo)
