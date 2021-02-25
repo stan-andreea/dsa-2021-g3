@@ -2,6 +2,13 @@
 
 Data Structures and Algorithms lab repository
 
+## Lab Structure
+
+### Lab02
+
+Deadline until 28.02.2021, 20:00 for making a PR on GitHub with what you've worked.
+Deadline until 4.03.2021, 8:00 for making a PR on GitHub with the extra assignment if you finished the basic mandatory problems.
+
 ## Grading
 
 There will be 2 laboratory tests, one about Data Structures and one about Algorithms.
