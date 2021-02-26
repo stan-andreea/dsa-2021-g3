@@ -1,0 +1,9 @@
+R: 2 5 10 9 22 
+G: none
+R: 5 10 9 22 
+G: 2 
+error: 10 not at exit!
+error: 25 not on road!
+error: 10 not in garage!
+R: 2 5 10 9 22 
+G: none
