@@ -1,0 +1,100 @@
+//extra2: function to remove duplicates from a SLL
+
+//delete a specific node:
+void deleteNode(ListT *listPtr, NodeT *p)
+{
+    NodeT *q;
+    q = p->next;
+
+
+    if ( p->next != NULL )
+    {
+
+
+
+            p->next = q->next;
+            if ( p->next == listPtr->last ) listPtr->last =p;
+            free( q );
+
+        listPtr->count--;
+
+    }
+
+
+}
+
+//sort the list:
+void sort(ListT *listPtr)
+{
+    NodeT *p;
+
+    int ok,aux;
+    p=listPtr->first;
+
+    //bubble sort:
+
+    do
+    {
+        ok=0;
+        p=listPtr->first;
+        while(p->next!=NULL)
+        {
+
+            if(p->key>p->next->key)
+            {
+                aux=p->key;
+                p->key=p->next->key;
+                p->next->key=aux;
+
+                ok=1; //we swapped something
+            }
+
+            p=p->next;
+        }
+
+
+    }
+    while(ok);
+
+
+}
+
+
+
+
+
+//function to remove all duplicates from a SLL
+
+
+void remove_dup(ListT *list1)
+{
+    NodeT *p;
+    sort(list1);
+    p = list1->first;
+    if(p==NULL)
+        return;
+
+    while(p!=NULL)
+    {
+
+        int del=0;
+
+        if(p->next!=NULL)
+        {
+
+            if(p->key==p->next->key)
+
+            {
+                deleteNode(list1,p);
+                del=1;
+            }
+
+
+        }
+
+       if(del==0)//no element deleted
+            p=p->next;
+    }
+
+
+}

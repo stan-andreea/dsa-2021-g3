@@ -1,0 +1,41 @@
+//extra1: intersection of two SLL
+
+int find(ListT *listPtr, int nr) //function to search for a specific number(node) in a list
+{
+    NodeT *p;
+    p = listPtr->first;
+    while ( p != NULL )
+        if ( p->key == nr )
+        {
+            return 1; //key found
+        }
+        else
+            p = p->next;
+    return 0; //key not found
+
+}
+
+
+
+//function that has paramets two SLL and returns the intersection node if they
+//intersect or NULL
+
+
+
+
+NodeT *intersection(ListT *list1, ListT *list2)
+{
+    NodeT *p;
+    p = list1->first;
+    while ( p != NULL )
+    {
+        if(find(list2,p->key)==1)
+            return p;
+        p=p->next;
+
+    }
+    return NULL;
+
+
+}
+
