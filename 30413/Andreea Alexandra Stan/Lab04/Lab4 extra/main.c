@@ -3,13 +3,13 @@
 
 typedef struct node_type
 {
-    int id; /* node name */
-    /* ... other useful info */
+    int id;
     struct node_type *left, *right;
+
 } NodeT;
 
 
-//for errot messages:
+//for error messages:
 void fatalError( const char *msg )
 {
     printf( msg );
@@ -60,18 +60,21 @@ int sum(NodeT *root)
     return root->id + sum(root->left)+sum(root->right);
 }
 
+
 //calculate the number of employees a manager has
 int nr_employees(NodeT *root)
 {
-     if(root==NULL)
+    if(root==NULL)
         return 0;
     return  1+nr_employees(root->left)+nr_employees(root->right);
 }
 
 
+
 //average tenure of a manager:
 double tenure(NodeT *root)
 {
+    if(root==NULL) return 0;
     return (double)(sum(root))/(nr_employees(root));
 }
 
@@ -79,42 +82,38 @@ double tenure(NodeT *root)
 
 //function the find the oldest one:
 
-NodeT *max_tenure1(NodeT *root)
+
+NodeT *createNode(int key)//function to create a node-here used when we insert
+{
+    NodeT *p = (NodeT *)malloc(sizeof(NodeT));
+    if (p)
+    {
+        p->id = key;
+        p->left = NULL;
+        p->right=NULL;
+    }
+    return p;
+}
+
+NodeT *maximt=NULL;//declared it global
+
+NodeT *max_tenure(NodeT *root)
 {
 
     if(root->left==NULL && root->right==NULL)//don't consider the leafs
         return NULL;
 
 
+    NodeT *lmax=max_tenure(root->left);
+    NodeT *rmax=max_tenure(root->right);
 
-   NodeT *maximt;
-   maximt=root;
-
-
-   if(root->left!=NULL)
-   {
-       double lmax=tenure(max_tenure1(root->left));
-       if(tenure(maximt)<lmax)
-
-                maximt=max_tenure1(root->left);
-
-
-   }
-
-   if(root->right!=NULL)
-   {
-        double rmax=tenure(max_tenure1(root->right));
-       if(tenure(maximt)<rmax)
-
-
-            maximt=max_tenure1(root->right);
-
-   }
-
-   return maximt;
+    if(tenure(root)>tenure(maximt))
+    {
+        maximt=root;
+    }
+    return maximt;
 
 }
-
 
 
 
@@ -126,7 +125,7 @@ int main()
     root = createBinTree( 0, NULL );
 
 
-    printf("\n\nId of the node with the oldest team: %d\n\n", max_tenure1(root)->id);
+    printf("\n\nId of the node with the oldest team: %d\n\n", max_tenure(root)->id);
 
 
 
