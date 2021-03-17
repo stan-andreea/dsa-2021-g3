@@ -83,18 +83,6 @@ double tenure(NodeT *root)
 //function the find the oldest one:
 
 
-NodeT *createNode(int key)//function to create a node-here used when we insert
-{
-    NodeT *p = (NodeT *)malloc(sizeof(NodeT));
-    if (p)
-    {
-        p->id = key;
-        p->left = NULL;
-        p->right=NULL;
-    }
-    return p;
-}
-
 NodeT *maximt=NULL;//declared it global
 
 NodeT *max_tenure(NodeT *root)
