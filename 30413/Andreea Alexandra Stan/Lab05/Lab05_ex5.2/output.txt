@@ -1,0 +1,35 @@
+Element X Not Found to delete
+
+The node G was found
+
+Preorder traversal is:
+C
+A
+B
+G
+E
+D
+M
+
+Postorder traversal is:
+B
+A
+D
+E
+M
+G
+C
+
+Inorder traversal is:
+A
+B
+C
+D
+E
+G
+M
+
+The minimum is: A
+
+The maximum is: M
+
