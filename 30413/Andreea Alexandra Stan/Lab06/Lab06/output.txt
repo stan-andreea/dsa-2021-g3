@@ -1,0 +1,16 @@
+
+No, Abc Abc not found 
+
+Yes, Abc Def found at table index 565
+
+Bucket for hash value 565
+Abc Def
+
+Bucket for hash value 1067
+John Watson
+
+Bucket for hash value 1126
+Andreea Stan
+
+Bucket for hash value 1507
+Sherlock Holmes 
